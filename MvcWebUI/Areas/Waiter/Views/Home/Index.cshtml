@@ -1,0 +1,83 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Waiter/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th>#Masalar#</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @foreach (Order t in ViewBag.orders)
+                    {
+                        <th>Masa @t.TableId</th>
+
+                    }
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+
+
+                    @foreach (Order item in ViewBag.orders)
+                    {
+
+                        <td>
+                            @Html.ActionLink($"{item.TableId }", "Create", "Order", item, new { @class = "btn btn-primary" })
+                        </td>
+
+
+                    }
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<label><b>Ürün Stok Takibi</b></label>
+<table class="table table-bordered table-primary">
+    <thead>
+        <tr>
+            <th scope="col">İsim</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Stok</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+                <td>@item.Description</td>
+                @foreach (Category category in ViewBag.Categories)
+                {
+                    if (item.CategoryId==category.Id)
+                    {
+            <td>@item.Category.CategoryName</td>
+                    }
+                }
+                
+            </tr>
+        }
+
+    </tbody>
+</table>

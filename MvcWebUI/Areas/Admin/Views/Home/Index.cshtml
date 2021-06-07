@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <table class="table table-borderless col-md-8 mx-md-auto">
+            <thead>
+                <tr>
+                    <th>Admin Ürün Stok Takibi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<table class="table table-bordered table-warning col-md-8 mx-md-auto">
+    <thead>
+        <tr>
+            <th scope="col">İsim</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Stok</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in ViewBag.Product)
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="row mt-2">
+        <figure>
+            <pre>
+            <span id="demo"></span>
+                </pre>
+        </figure>
+    </div>
+    <button class="btn btn-primary" onclick="Tikla()">Stok Takibi Bilgilendirmesi</button>
+
+</div>
+
+<script>
+
+        function Tikla() {
+            document.getElementById('demo').innerHTML = "Herhangi bir Ürün adedi 50 ve altına düşerse satın alım elemanımızın mailine (denemeproje307@gmail.com) bildiri gider";
+        }
+
+</script>
+

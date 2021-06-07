@@ -1,0 +1,40 @@
+﻿@model Branch
+@{
+    ViewData["Title"] = "AddBranch";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div asp-validation-summary="All">
+
+            </div>
+            <form asp-action="AddBranch" method="post">
+                <div class="form-group">
+                    <label asp-for="Name">Şube İsmi</label>
+                    <input name="Name" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address">Adres</label>
+                    <input name="Address" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Telefon Numarası</label>
+                    <input name="PhoneNumber" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input name="Email" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Company">Şirket</label>
+                    <input name="Company" type="text" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+

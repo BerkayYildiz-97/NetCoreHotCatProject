@@ -1,0 +1,24 @@
+﻿@model Table
+@{
+    ViewData["Title"] = "AddTable";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div asp-validation-summary="All">
+
+            </div>
+            <form asp-action="AddTable" method="post">
+                <div class="form-group">
+                    <label asp-for="Number">Masa Numarası</label>
+                    <input name="Number" type="text" class="form-control" />
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+

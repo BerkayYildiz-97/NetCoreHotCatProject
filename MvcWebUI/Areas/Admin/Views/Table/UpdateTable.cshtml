@@ -1,0 +1,21 @@
+﻿@model Table
+@{
+    ViewData["Title"] = "UpdateTable";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form asp-action="Edit" method="post">
+                <div class="form-group">
+                    <label>Masa Numarası</label>
+                    <input asp-for="Number" value="@Model.Number" type="text" class="form-control" />
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Düzenle</button>
+            </form>
+        </div>
+    </div>
+</div>
+

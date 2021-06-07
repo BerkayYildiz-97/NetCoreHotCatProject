@@ -1,0 +1,65 @@
+﻿@model List<Service.ViewModels.OrderDetailVM>
+@{
+    ViewData["Title"] = "OrderDone";
+    Layout = "~/Areas/Cashier/Views/Shared/_Layout.cshtml";
+    var total = TempData["total"];
+    var orderDetail = ViewBag.orderDetail;
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Adeti</th>
+                    <th>Fiyatı</th>
+                    <th>Ürünün Toplam Fiyatı</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model)
+                {
+
+                    <tr>
+                        <td>@detail.ProductName</td>
+
+                        <td>
+                           @detail.Quantity
+                        </td>
+
+
+                        <td>
+                           @detail.UnitPrice
+
+                        </td>
+
+                        <td>@(detail.Quantity*detail.UnitPrice)</td>
+                        <td>@Html.ActionLink("Siparişi Tamamla","Order","Order",new {id=detail.OrderId } , new { @class = "btn btn-success" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table table-secondary" >
+            <thead>
+                <tr>
+                    <th>Masanın Toplam Hesabı</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@total.ToString()</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @*<span>@total.ToString()</span>*@
+</div>
+
+
+

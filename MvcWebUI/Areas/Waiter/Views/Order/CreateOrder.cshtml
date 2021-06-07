@@ -1,0 +1,39 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "CreateOrder";
+    Layout = "~/Areas/Waiter/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form asp-action="CreateOrder" method="get">
+
+                <div class="form-group">
+                    <label>Masa Seç</label>
+                    <select asp-for="TableId">
+                        @foreach (Table item in ViewBag.Table)
+                        {
+                            <option value="@item.Id">@item.Number</option>
+                        }
+                    </select>
+
+                </div>
+
+                @*<div class="form-group">
+                    <label>Garson Seç</label>
+                    <select asp-for="AppUserId">
+                        @foreach (var item in ViewBag.Waiter)
+                        {
+                            <option value="@item.Id">@item.UserName</option>
+                        }
+                    </select>
+
+                </div>*@
+
+                <button type="submit" asp-action="Create" asp-controller="Order" class="btn btn-primary">Sipariş Girişi Yap</button>
+            </form>
+        </div>
+    </div>
+</div>
+

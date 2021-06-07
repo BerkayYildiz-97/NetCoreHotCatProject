@@ -1,0 +1,38 @@
+﻿@model Branch
+@{
+    ViewData["Title"] = "UpdateBranch";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form asp-action="UpdateBranch" method="post">
+                <div class="form-group">
+                    <label>Şube İsmi</label>
+                    <input asp-for="Name" value="@Model.Name" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    <input asp-for="Address" value="@Model.Address" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Telefon Numarası</label>
+                    <input asp-for="PhoneNumber" value="@Model.PhoneNumber" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input asp-for="Email" value="@Model.Email" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Şirket</label>
+                    <input asp-for="Company" value="@Model.Company" type="text" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Düzenle</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

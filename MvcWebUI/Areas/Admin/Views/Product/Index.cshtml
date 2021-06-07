@@ -1,0 +1,48 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>İsim</th>
+                    <th>Açıklama</th>
+                    <th>Fiyat</th>
+                    <th>Stok</th>
+                    <th>Kategori</th>
+                    <th>Güncelle/Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.UnitPrice</td>
+                        <td>@product.UnitsInStock</td>
+                        @foreach (Category category in ViewBag.Categories)
+                        {
+                            if (category.Id==product.CategoryId)
+                            {
+                                <td>@product.Category.CategoryName</td>
+                            }
+                        }
+                        
+                        <td>
+                           
+                            @Html.ActionLink("Sil", "RemoveProduct", new { id = product.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Güncelle", "UpdateProduct", new { id = product.Id }, new { @class = "btn btn-warning" })
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

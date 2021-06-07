@@ -1,0 +1,51 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        @ViewData["Title"]
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>(Boş Sütun)</th>
+                        <th>İsim </th>
+                        <th>Soyisim</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Şifre(Mevcut Seed Şifreleri: Test123++ )</th>
+                        <th>Email</th>
+                            
+                        <th>Sil/Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var appUser in Model)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@appUser.FirstName</td>
+                            <td>@appUser.LastName</td>
+                            <td>@appUser.UserName</td>
+                            <td>@appUser.Password</td>
+                            <td>@appUser.Email</td>
+                            
+                            <td class="text-right">
+                                
+                                @*@Html.ActionLink("Güncelle", "UpdateAppUser", "AppUser", new { id = appUser.Id }, new { @class = "btn btn-warning" })*@
+                                @Html.ActionLink("Sil", "RemoveAppUser", "AppUser", new { id = appUser.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,102 @@
+﻿@model List<Table>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Cashier/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th>#Masalar#</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @foreach (Table t in ViewBag.Table)
+                    {
+                        <th>Masa @t.Number</th>
+
+                    }
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (Table item in ViewBag.Table)
+                    {
+
+                        <td>
+                            @Html.ActionLink($"{item.Number }", "OrderDone", "Order", new { masaId = item.Id }, new { @class = "btn btn-primary" })
+                        </td>
+
+
+                    }
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<label><b>Ürün Stok Takibi</b></label>
+<table class="table table-bordered table-primary">
+    <thead>
+        <tr>
+            <th scope="col">İsim</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Stok</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product product in ViewBag.Product)
+        {
+            <tr>
+                <th scope="row">@product.Name</th>
+                <td>@product.UnitPrice</td>
+                <td>@product.UnitsInStock</td>
+                <td>@product.Description</td>
+                @foreach (Category item in ViewBag.Categories)
+                {
+                    if (product.CategoryId == item.Id)
+                    {
+                        <td>@product.Category.CategoryName</td>
+                    }
+                }
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div class="container">
+    <div class="row mt-2">
+        <figure>
+            <pre>
+            <span id="demo"></span>
+                </pre>
+        </figure>
+    </div>
+    <button class="btn btn-primary" onclick="Tikla()">Bilgi Al</button>
+
+</div>
+
+<script>
+
+        function Tikla() {
+            document.getElementById('demo').innerHTML = "Herhangi bir Ürün adedi 50 ve altına düşerse satın alım elemanımızın mailine (denemeproje307@gmail.com) bildiri gider";
+        }
+
+</script>
+
